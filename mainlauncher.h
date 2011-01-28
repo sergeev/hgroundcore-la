@@ -5,7 +5,8 @@
 #include <QWebView>
 #include <QThread>
 
-namespace Ui {
+namespace Ui
+{
     class MainLauncher;
 }
 
@@ -25,8 +26,15 @@ class AntiCheat : public QThread
 {
     Q_OBJECT
 
+public:
+    explicit AntiCheat();
+    ~AntiCheat();
+
 protected:
     void run();
+
+private:
+    bool bDone;
 };
 
 class MainLauncher : public QDialog

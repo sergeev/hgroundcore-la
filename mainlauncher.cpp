@@ -17,10 +17,6 @@ MainLauncher::MainLauncher(QWidget *parent)
 
 MainLauncher::~MainLauncher()
 {
-    // potrzebujemy tego ? nie uzywamy QThread::exec()
-    if (pAntiCheat->isRunning())
-        pAntiCheat->exit();
-
     delete pInterface;
     delete pAntiCheat;
     delete pChangeLog;
@@ -71,11 +67,21 @@ ChangeLog::~ChangeLog()
     delete pView;
 }
 
+AntiCheat::AntiCheat() : bDone(false)
+{
+}
+
+AntiCheat::~AntiCheat()
+{
+    bDone = true;
+    wait();
+}
+
 void AntiCheat::run()
 {
-    while(true)
+    while (!bDone)
     {
         // sleep na 5s ;]
-        usleep(5000);
+        msleep(5000);
     }
 }
