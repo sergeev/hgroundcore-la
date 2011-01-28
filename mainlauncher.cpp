@@ -4,14 +4,24 @@
 #include <qprocess.h>
 
 MainLauncher::MainLauncher(QWidget *parent)
-    : QDialog(parent), ui(new Ui::MainLauncher), pChangelog(NULL)
+    : QDialog(parent), pUI(new Ui::MainLauncher), pChangelog(NULL)
 {
-    ui->setupUi(this);
+    pUI->setupUi(this);
+
+    pAC = new AntiCheat();
+    pAC->start();
 }
 
 MainLauncher::~MainLauncher()
 {
-    delete ui;
+    if (pChangelog)
+        delete pChangelog;
+
+    if (pAC->isRunning())
+        pAC->exit();
+
+    delete pAC;
+    delete pUI;
 }
 
 void MainLauncher::on_b_play_clicked()
@@ -40,20 +50,33 @@ void MainLauncher::on_b_play_clicked()
 void MainLauncher::on_b_changelog_clicked()
 {
     if (!pChangelog)
-    {
-        pChangelog = new QDialog(this);
-        pChangelog->setWindowTitle("Changelog");
-        pChangelog->setGeometry(QRect(50,50, 300, 400));
-        pChangelog->setMinimumSize(QSize(250, 420));
-        pChangelog->setMaximumSize(QSize(250, 430));
-
-        QWebView *cView = new QWebView(pChangelog);
-        cView->setUrl(QUrl("http://localhost/~lukaasm/changelog.html"));
-        cView->setMaximumSize(QSize(250, 800));
-
-        // scrollbar itp, tego brakuje :} DO DOPRACOWANIA
-
-    }
+       pChangelog = new ChangeLog(this);
 
     pChangelog->show();
+}
+
+ChangeLog::ChangeLog(QWidget *parent)
+{
+    setWindowTitle("Changelog");
+    setGeometry(QRect(50,50, 300, 400));
+    setMinimumSize(QSize(250, 420));
+    setMaximumSize(QSize(250, 430));
+
+    pView = new QWebView(this);
+    pView->setUrl(QUrl("http://localhost/~lukaasm/changelog.html"));
+    pView->setMaximumSize(QSize(250, 800));
+
+}
+
+ChangeLog::~ChangeLog()
+{
+    delete pView;
+}
+
+void AntiCheat::run()
+{
+    while(1)
+    {
+        usleep(5000);
+    }
 }
