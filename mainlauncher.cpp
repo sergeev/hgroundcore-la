@@ -1,27 +1,29 @@
 #include "mainlauncher.h"
 #include "ui_mainlauncher.h"
 
-#include <qprocess.h>
+#include <QProcess.h>
 
 MainLauncher::MainLauncher(QWidget *parent)
-    : QDialog(parent), pUI(new Ui::MainLauncher), pChangelog(NULL)
+    : QDialog(parent)
 {
-    pUI->setupUi(this);
+    pInterface = new Ui::MainLauncher();
+    pInterface->setupUi(this);
 
-    pAC = new AntiCheat();
-    pAC->start();
+    pAntiCheat = new AntiCheat();
+    pAntiCheat->start();
+
+    pChangeLog = new ChangeLog(this);
 }
 
 MainLauncher::~MainLauncher()
 {
-    if (pChangelog)
-        delete pChangelog;
+    // potrzebujemy tego ? nie uzywamy QThread::exec()
+    if (pAntiCheat->isRunning())
+        pAntiCheat->exit();
 
-    if (pAC->isRunning())
-        pAC->exit();
-
-    delete pAC;
-    delete pUI;
+    delete pInterface;
+    delete pAntiCheat;
+    delete pChangeLog;
 }
 
 void MainLauncher::on_b_play_clicked()
@@ -49,10 +51,7 @@ void MainLauncher::on_b_play_clicked()
 
 void MainLauncher::on_b_changelog_clicked()
 {
-    if (!pChangelog)
-       pChangelog = new ChangeLog(this);
-
-    pChangelog->show();
+    pChangeLog->show();
 }
 
 ChangeLog::ChangeLog(QWidget *parent)
@@ -65,7 +64,6 @@ ChangeLog::ChangeLog(QWidget *parent)
     pView = new QWebView(this);
     pView->setUrl(QUrl("http://localhost/~lukaasm/changelog.html"));
     pView->setMaximumSize(QSize(250, 800));
-
 }
 
 ChangeLog::~ChangeLog()
@@ -75,8 +73,9 @@ ChangeLog::~ChangeLog()
 
 void AntiCheat::run()
 {
-    while(1)
+    while(true)
     {
+        // sleep na 5s ;]
         usleep(5000);
     }
 }
