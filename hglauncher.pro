@@ -4,19 +4,22 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT       += webkit
+QT       += core gui declarative webkit
 
 TARGET = hglauncher
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    mainlauncher.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    mainlauncher.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    mainlauncher.ui
 
 RESOURCES += \
     resources.qrc
+
+OTHER_FILES +=
