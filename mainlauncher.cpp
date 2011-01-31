@@ -2,10 +2,15 @@
 #include "ui_mainlauncher.h"
 
 #include <QProcess.h>
+#include <QLabel.h>
 
 MainLauncher::MainLauncher(QWidget *parent)
     : QDialog(parent)
 {
+    pBackground = new QFrame(this);
+    pBackground->setMinimumSize(550, 220);
+    pBackground->setStyleSheet("background-image: url(:/background.jpg);");
+
     pInterface = new Ui::MainLauncher();
     pInterface->setupUi(this);
 
@@ -17,9 +22,10 @@ MainLauncher::MainLauncher(QWidget *parent)
 
 MainLauncher::~MainLauncher()
 {
-    delete pInterface;
     delete pAntiCheat;
     delete pChangeLog;
+    delete pBackground;
+    delete pInterface;
 }
 
 void MainLauncher::on_b_play_clicked()
@@ -50,6 +56,15 @@ void MainLauncher::on_b_changelog_clicked()
     pChangeLog->show();
 }
 
+void MainLauncher::on_webView_loadFinished(bool bSuccess)
+{
+    if (!bSuccess)
+    {
+        pInterface->webView->hide();
+        pBackground->show();
+    }
+}
+
 ChangeLog::ChangeLog(QWidget *parent)
 {
     setWindowTitle("Changelog");
@@ -67,7 +82,8 @@ ChangeLog::~ChangeLog()
     delete pView;
 }
 
-AntiCheat::AntiCheat() : bDone(false)
+AntiCheat::AntiCheat()
+    : bDone(false)
 {
 }
 
@@ -81,6 +97,7 @@ void AntiCheat::run()
 {
     while (!bDone)
     {
+        // zrob cos
         // sleep na 5s ;]
         msleep(5000);
     }

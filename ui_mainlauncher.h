@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainlauncher.ui'
 **
-** Created: Fri 28. Jan 19:34:23 2011
+** Created: Mon 31. Jan 01:01:10 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,7 +16,6 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
 #include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
 #include <QtGui/QPushButton>
 #include <QtWebKit/QWebView>
 

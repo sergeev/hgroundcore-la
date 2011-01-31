@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QWebView>
 #include <QThread>
+#include <QFrame>
 
 namespace Ui
 {
@@ -51,7 +52,10 @@ private:
     ChangeLog *pChangeLog;
     AntiCheat *pAntiCheat;
 
+    QFrame *pBackground;
+
 private slots:
+    void on_webView_loadFinished(bool );
     void on_b_changelog_clicked();
     void on_b_play_clicked();
 };
