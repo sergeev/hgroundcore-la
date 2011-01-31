@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainlauncher.ui'
 **
-** Created: Mon 31. Jan 01:01:10 2011
+** Created: Mon 31. Jan 01:47:43 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
