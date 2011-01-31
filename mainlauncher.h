@@ -6,6 +6,8 @@
 #include <QThread>
 #include <QFrame>
 
+#define HG_LAUNCHER_INDEX QUrl("http://localhost/~lukaasm/")
+
 namespace Ui
 {
     class MainLauncher;
@@ -55,7 +57,9 @@ private:
     QFrame *pBackground;
 
 private slots:
-    void on_webView_loadFinished(bool );
+    void on_webView_urlChanged(QUrl);
+    void on_webView_loadFinished(bool);
+
     void on_b_changelog_clicked();
     void on_b_play_clicked();
 };

@@ -18,7 +18,7 @@ MainLauncher::MainLauncher(QWidget *parent)
     pAntiCheat->start();
 
     pChangeLog = new ChangeLog(this);
-}
+    }
 
 MainLauncher::~MainLauncher()
 {
@@ -54,6 +54,12 @@ void MainLauncher::on_b_play_clicked()
 void MainLauncher::on_b_changelog_clicked()
 {
     pChangeLog->show();
+}
+
+void MainLauncher::on_webView_urlChanged(QUrl newUrl)
+{
+    if (newUrl != HG_LAUNCHER_INDEX)
+        on_webView_loadFinished(false);
 }
 
 void MainLauncher::on_webView_loadFinished(bool bSuccess)
