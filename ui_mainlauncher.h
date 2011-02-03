@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainlauncher.ui'
 **
-** Created: Mon 31. Jan 01:47:43 2011
+** Created: Thu 3. Feb 19:57:16 2011
 **      by: Qt User Interface Compiler version 4.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -40,7 +40,7 @@ public:
         webView = new QWebView(MainLauncher);
         webView->setObjectName(QString::fromUtf8("webView"));
         webView->setGeometry(QRect(0, 0, 550, 220));
-        webView->setUrl(QUrl("http://localhost/~lukaasm/"));
+        webView->setUrl(QUrl("http://panel.gamefreedom.pl/testowo/stats_hg.php"));
         b_play = new QPushButton(MainLauncher);
         b_play->setObjectName(QString::fromUtf8("b_play"));
         b_play->setGeometry(QRect(410, 130, 111, 51));

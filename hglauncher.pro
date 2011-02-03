@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui declarative webkit
+QT       += core gui webkit
 
 TARGET = hglauncher
 TEMPLATE = app

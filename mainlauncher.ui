@@ -42,7 +42,7 @@
    </property>
    <property name="url">
     <url>
-     <string>http://localhost/~lukaasm/</string>
+     <string>http://panel.gamefreedom.pl/testowo/stats_hg.php</string>
     </url>
    </property>
   </widget>

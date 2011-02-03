@@ -6,7 +6,7 @@
 #include <QThread>
 #include <QFrame>
 
-#define HG_LAUNCHER_INDEX QUrl("http://localhost/~lukaasm/")
+#define HG_LAUNCHER_INDEX QUrl("http://panel.gamefreedom.pl/testowo/stats_hg.php")
 
 namespace Ui
 {
