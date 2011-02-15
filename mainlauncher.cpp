@@ -1,8 +1,9 @@
 #include "mainlauncher.h"
 #include "ui_mainlauncher.h"
 
-#include <QProcess.h>
-#include <QLabel.h>
+#include <qprocess.h>
+#include <qlabel.h>
+#include <QTimerEvent>
 
 MainLauncher::MainLauncher(QWidget *parent)
     : QDialog(parent)
@@ -18,7 +19,9 @@ MainLauncher::MainLauncher(QWidget *parent)
     pAntiCheat->start();
 
     pChangeLog = new ChangeLog(this);
-    }
+
+    this->startTimer(HG_INDEX_INTERVAL);
+}
 
 MainLauncher::~MainLauncher()
 {
@@ -26,6 +29,11 @@ MainLauncher::~MainLauncher()
     delete pChangeLog;
     delete pBackground;
     delete pInterface;
+}
+
+void MainLauncher::timerEvent(QTimerEvent*)
+{
+    pInterface->webView->reload();
 }
 
 void MainLauncher::on_b_play_clicked()

@@ -7,6 +7,7 @@
 #include <QFrame>
 
 #define HG_LAUNCHER_INDEX QUrl("http://panel.gamefreedom.pl/testowo/stats_hg.php")
+#define HG_INDEX_INTERVAL 60000
 
 namespace Ui
 {
@@ -47,6 +48,9 @@ class MainLauncher : public QDialog
 public:
     explicit MainLauncher(QWidget *parent = 0);
     ~MainLauncher();
+
+protected:
+    void timerEvent (QTimerEvent * event);
 
 private:
     Ui::MainLauncher *pInterface;
