@@ -6,8 +6,7 @@
 #include <QThread>
 #include <QFrame>
 
-#define HG_LAUNCHER_INDEX QUrl("http://uploader.hellground.pl/")
-//http://panel.hellground.pl/testowo/stats_hg.php")
+#define HG_LAUNCHER_INDEX QUrl("http://panel.hellground.pl/testowo/stats_hg.php")
 #define HG_INDEX_INTERVAL 60000
 
 namespace Ui

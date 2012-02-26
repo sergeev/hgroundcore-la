@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainlauncher.h'
 **
-** Created: Sun Feb 26 20:08:11 2012
+** Created: Sun Feb 26 21:40:28 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -145,7 +145,7 @@ static const uint qt_meta_data_MainLauncher[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -158,6 +158,7 @@ static const uint qt_meta_data_MainLauncher[] = {
       72,   13,   13,   13, 0x08,
       97,   13,   13,   13, 0x08,
      117,   13,   13,   13, 0x08,
+     148,  143,   13,   13, 0x08,
 
        0        // eod
 };
@@ -166,7 +167,8 @@ static const char qt_meta_stringdata_MainLauncher[] = {
     "MainLauncher\0\0on_webView_urlChanged(QUrl)\0"
     "on_webView_loadFinished(bool)\0"
     "on_b_changelog_clicked()\0on_b_play_clicked()\0"
-    "on_b_clearCache_clicked()\0"
+    "on_b_clearCache_clicked()\0arg1\0"
+    "on_webView_linkClicked(QUrl)\0"
 };
 
 void MainLauncher::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -180,6 +182,7 @@ void MainLauncher::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 2: _t->on_b_changelog_clicked(); break;
         case 3: _t->on_b_play_clicked(); break;
         case 4: _t->on_b_clearCache_clicked(); break;
+        case 5: _t->on_webView_linkClicked((*reinterpret_cast< const QUrl(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -217,9 +220,9 @@ int MainLauncher::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

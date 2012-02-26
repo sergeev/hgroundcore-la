@@ -40,18 +40,17 @@ void MainLauncher::timerEvent(QTimerEvent*)
 
 void MainLauncher::resizeEvent(QResizeEvent * event)
 {
-    QSize sizeChange = event->size() - event->oldSize();
-    pBackground->setSizeIncrement(sizeChange);
-    pInterface->verticalLayoutWidget->setSizeIncrement(sizeChange);
+    pBackground->resize(event->size());
+    pInterface->verticalLayoutWidget->resize(event->size());
 }
 
 void MainLauncher::on_b_play_clicked()
 {
     QStringList commands;
     commands << "";
-    #ifndef WIN32
+
+    if (pInterface->cbOpenGL->isChecked())
         commands << " -opengl";
-    #endif
 
     QProcess *wowApp = new QProcess(this);
 
