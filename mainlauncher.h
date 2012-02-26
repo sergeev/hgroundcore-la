@@ -6,7 +6,8 @@
 #include <QThread>
 #include <QFrame>
 
-#define HG_LAUNCHER_INDEX QUrl("http://panel.hellground.pl/testowo/stats_hg.php")
+#define HG_LAUNCHER_INDEX QUrl("http://uploader.hellground.pl/")
+//http://panel.hellground.pl/testowo/stats_hg.php")
 #define HG_INDEX_INTERVAL 60000
 
 namespace Ui
@@ -51,6 +52,7 @@ public:
 
 protected:
     void timerEvent (QTimerEvent * event);
+    void resizeEvent (QResizeEvent * event);
 
 private:
     Ui::MainLauncher *pInterface;
@@ -67,6 +69,7 @@ private slots:
     void on_b_changelog_clicked();
     void on_b_play_clicked();
     void on_b_clearCache_clicked();
+    void on_webView_linkClicked(const QUrl &arg1);
 };
 
 #endif // MAINLAUNCHER_H

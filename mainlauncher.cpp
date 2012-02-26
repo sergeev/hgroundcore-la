@@ -1,10 +1,11 @@
 #include "mainlauncher.h"
 #include "ui_mainlauncher.h"
 
-#include <qprocess.h>
-#include <qlabel.h>
+#include <QProcess>
+#include <QLabel>
 #include <QTimerEvent>
 #include <QDir>
+#include <QResizeEvent>
 
 MainLauncher::MainLauncher(QWidget *parent)
     : QDialog(parent)
@@ -35,6 +36,13 @@ MainLauncher::~MainLauncher()
 void MainLauncher::timerEvent(QTimerEvent*)
 {
     pInterface->webView->reload();
+}
+
+void MainLauncher::resizeEvent(QResizeEvent * event)
+{
+    QSize sizeChange = event->size() - event->oldSize();
+    pBackground->setSizeIncrement(sizeChange);
+    pInterface->verticalLayoutWidget->setSizeIncrement(sizeChange);
 }
 
 void MainLauncher::on_b_play_clicked()
@@ -124,4 +132,9 @@ void AntiCheat::run()
         // sleep na 5s ;]
         msleep(5000);
     }
+}
+
+void MainLauncher::on_webView_linkClicked(const QUrl &/*arg1*/)
+{
+
 }
