@@ -4,6 +4,7 @@
 #include <qprocess.h>
 #include <qlabel.h>
 #include <QTimerEvent>
+#include <QDir>
 
 MainLauncher::MainLauncher(QWidget *parent)
     : QDialog(parent)
@@ -64,6 +65,13 @@ void MainLauncher::on_b_changelog_clicked()
     pChangeLog->show();
 }
 
+void MainLauncher::on_b_clearCache_clicked()
+{
+    QDir currentDir = QDir::current();  // get app
+    if (currentDir.exists("Wow.exe"))   // check if it's WoW directory
+        currentDir.rmdir("Cache");      // delete Cache directory
+}
+
 void MainLauncher::on_webView_urlChanged(QUrl newUrl)
 {
     if (newUrl != HG_LAUNCHER_INDEX)
@@ -79,7 +87,7 @@ void MainLauncher::on_webView_loadFinished(bool bSuccess)
     }
 }
 
-ChangeLog::ChangeLog(QWidget *parent)
+ChangeLog::ChangeLog(QWidget * /*parent*/)
 {
     setWindowTitle("Changelog");
     setGeometry(QRect(50,50, 300, 400));
