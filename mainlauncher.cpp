@@ -6,6 +6,7 @@
 #include <QTimerEvent>
 #include <QDir>
 #include <QResizeEvent>
+#include <QWebFrame>
 
 MainLauncher::MainLauncher(QWidget *parent)
     : QDialog(parent)
@@ -17,18 +18,11 @@ MainLauncher::MainLauncher(QWidget *parent)
     pInterface = new Ui::MainLauncher();
     pInterface->setupUi(this);
 
-    pAntiCheat = new AntiCheat();
-    pAntiCheat->start();
-
-    pChangeLog = new ChangeLog(this);
-
     this->startTimer(HG_INDEX_INTERVAL);
 }
 
 MainLauncher::~MainLauncher()
 {
-    delete pAntiCheat;
-    delete pChangeLog;
     delete pBackground;
     delete pInterface;
 }
@@ -67,11 +61,6 @@ void MainLauncher::on_b_play_clicked()
     }
 }
 
-void MainLauncher::on_b_changelog_clicked()
-{
-    pChangeLog->show();
-}
-
 void MainLauncher::on_b_clearCache_clicked()
 {
     QDir currentDir = QDir::current();  // get app directory
@@ -93,43 +82,11 @@ void MainLauncher::on_webView_loadFinished(bool bSuccess)
         pInterface->webView->hide();
         pBackground->show();
     }
-}
-
-ChangeLog::ChangeLog(QWidget * /*parent*/)
-{
-    setWindowTitle("Changelog");
-    setGeometry(QRect(50,50, 300, 400));
-    setMinimumSize(QSize(250, 420));
-    setMaximumSize(QSize(250, 430));
-
-    pView = new QWebView(this);
-    pView->setUrl(QUrl("http://localhost/~lukaasm/changelog.html"));
-    pView->setMaximumSize(QSize(250, 800));
-}
-
-ChangeLog::~ChangeLog()
-{
-    delete pView;
-}
-
-AntiCheat::AntiCheat()
-    : bDone(false)
-{
-}
-
-AntiCheat::~AntiCheat()
-{
-    bDone = true;
-    wait();
-}
-
-void AntiCheat::run()
-{
-    while (!bDone)
+    else
     {
-        // zrob cos
-        // sleep na 5s ;]
-        msleep(5000);
+        QSize tmpSize = pInterface->webView->page()->mainFrame()->contentsSize();
+        if (tmpSize.height() > pInterface->webView->minimumHeight())
+            resize(tmpSize + pInterface->b_play->size());   // resize window to new content size + size for buttons
     }
 }
 
