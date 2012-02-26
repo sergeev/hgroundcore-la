@@ -67,9 +67,10 @@ void MainLauncher::on_b_changelog_clicked()
 
 void MainLauncher::on_b_clearCache_clicked()
 {
-    QDir currentDir = QDir::current();  // get app
+    QDir currentDir = QDir::current();  // get app directory
     if (currentDir.exists("Wow.exe"))   // check if it's WoW directory
-        currentDir.rmdir("Cache");      // delete Cache directory
+        if (currentDir.cd("Cache"))     // change directory to Cache to have absolute path
+            currentDir.rmpath(currentDir.absolutePath());
 }
 
 void MainLauncher::on_webView_urlChanged(QUrl newUrl)
