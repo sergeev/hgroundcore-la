@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainlauncher.ui'
 **
-** Created: Mon Feb 27 00:12:56 2012
+** Created: Mon Feb 27 10:40:42 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,10 +16,10 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QCheckBox>
 #include <QtGui/QDialog>
-#include <QtGui/QGridLayout>
+#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
+#include <QtGui/QLabel>
 #include <QtGui/QPushButton>
-#include <QtGui/QSpacerItem>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 #include <QtWebKit/QWebView>
@@ -32,11 +32,11 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QWebView *webView;
-    QGridLayout *gridLayout;
-    QSpacerItem *horizontalSpacer;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *b_clearCache;
+    QLabel *lblInfo;
     QCheckBox *cbOpenGL;
     QPushButton *b_play;
-    QPushButton *b_clearCache;
 
     void setupUi(QDialog *MainLauncher)
     {
@@ -55,20 +55,14 @@ public:
         MainLauncher->setSizeGripEnabled(false);
         verticalLayoutWidget = new QWidget(MainLauncher);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(0, 0, 551, 579));
+        verticalLayoutWidget->setGeometry(QRect(0, 0, 551, 221));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         webView = new QWebView(verticalLayoutWidget);
         webView->setObjectName(QString::fromUtf8("webView"));
-        webView->setEnabled(true);
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Maximum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(webView->sizePolicy().hasHeightForWidth());
-        webView->setSizePolicy(sizePolicy1);
-        webView->setMaximumSize(QSize(550, 550));
+        webView->setMaximumSize(QSize(550, 200));
         webView->setMouseTracking(false);
         webView->setContextMenuPolicy(Qt::NoContextMenu);
         webView->setAcceptDrops(false);
@@ -77,15 +71,22 @@ public:
 
         verticalLayout->addWidget(webView);
 
-        gridLayout = new QGridLayout();
-        gridLayout->setSpacing(0);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalSpacer = new QSpacerItem(138, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        b_clearCache = new QPushButton(verticalLayoutWidget);
+        b_clearCache->setObjectName(QString::fromUtf8("b_clearCache"));
+        b_clearCache->setMaximumSize(QSize(550, 16777215));
 
-        gridLayout->addItem(horizontalSpacer, 2, 1, 1, 1);
+        horizontalLayout->addWidget(b_clearCache);
 
-        cbOpenGL = new QCheckBox(verticalLayoutWidget);
-        cbOpenGL->setObjectName(QString::fromUtf8("cbOpenGL"));
+        lblInfo = new QLabel(verticalLayoutWidget);
+        lblInfo->setObjectName(QString::fromUtf8("lblInfo"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(1);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(lblInfo->sizePolicy().hasHeightForWidth());
+        lblInfo->setSizePolicy(sizePolicy1);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -93,43 +94,73 @@ public:
         QBrush brush1(QColor(0, 0, 0, 125));
         brush1.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Active, QPalette::Button, brush1);
-        palette.setBrush(QPalette::Active, QPalette::Text, brush);
-        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
-        QBrush brush2(QColor(0, 0, 127, 150));
+        QBrush brush2(QColor(0, 0, 0, 255));
         brush2.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Active, QPalette::Window, brush2);
-        palette.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Mid, brush2);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette.setBrush(QPalette::Active, QPalette::BrightText, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Inactive, QPalette::Mid, brush2);
         palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
-        palette.setBrush(QPalette::Inactive, QPalette::Window, brush2);
-        palette.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
         QBrush brush3(QColor(106, 104, 100, 255));
         brush3.setStyle(Qt::SolidPattern);
         palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
         palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Mid, brush2);
         palette.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        palette.setBrush(QPalette::Disabled, QPalette::Base, brush2);
-        palette.setBrush(QPalette::Disabled, QPalette::Window, brush2);
-        palette.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
-        cbOpenGL->setPalette(palette);
+        palette.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        lblInfo->setPalette(palette);
+        lblInfo->setAutoFillBackground(true);
+
+        horizontalLayout->addWidget(lblInfo);
+
+        cbOpenGL = new QCheckBox(verticalLayoutWidget);
+        cbOpenGL->setObjectName(QString::fromUtf8("cbOpenGL"));
+        sizePolicy.setHeightForWidth(cbOpenGL->sizePolicy().hasHeightForWidth());
+        cbOpenGL->setSizePolicy(sizePolicy);
+        cbOpenGL->setMaximumSize(QSize(550, 16777215));
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Base, brush1);
+        QBrush brush4(QColor(0, 0, 127, 150));
+        brush4.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush4);
+        palette1.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Base, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush4);
+        palette1.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
+        cbOpenGL->setPalette(palette1);
         cbOpenGL->setAutoFillBackground(true);
 
-        gridLayout->addWidget(cbOpenGL, 2, 2, 1, 1);
+        horizontalLayout->addWidget(cbOpenGL);
 
         b_play = new QPushButton(verticalLayoutWidget);
         b_play->setObjectName(QString::fromUtf8("b_play"));
+        b_play->setMaximumSize(QSize(550, 16777215));
 
-        gridLayout->addWidget(b_play, 2, 3, 1, 1);
-
-        b_clearCache = new QPushButton(verticalLayoutWidget);
-        b_clearCache->setObjectName(QString::fromUtf8("b_clearCache"));
-
-        gridLayout->addWidget(b_clearCache, 2, 0, 1, 1);
+        horizontalLayout->addWidget(b_play);
 
 
-        verticalLayout->addLayout(gridLayout);
+        verticalLayout->addLayout(horizontalLayout);
 
 
         retranslateUi(MainLauncher);
@@ -140,9 +171,10 @@ public:
     void retranslateUi(QDialog *MainLauncher)
     {
         MainLauncher->setWindowTitle(QApplication::translate("MainLauncher", "Dialog", 0, QApplication::UnicodeUTF8));
+        b_clearCache->setText(QApplication::translate("MainLauncher", "Clear Cache", 0, QApplication::UnicodeUTF8));
+        lblInfo->setText(QApplication::translate("MainLauncher", "HellGround Launcher", 0, QApplication::UnicodeUTF8));
         cbOpenGL->setText(QApplication::translate("MainLauncher", "- opengl", 0, QApplication::UnicodeUTF8));
         b_play->setText(QApplication::translate("MainLauncher", "Play !", 0, QApplication::UnicodeUTF8));
-        b_clearCache->setText(QApplication::translate("MainLauncher", "Clear Cache", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

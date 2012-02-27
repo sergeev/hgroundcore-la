@@ -18,6 +18,10 @@ MainLauncher::MainLauncher(QWidget *parent)
     pInterface = new Ui::MainLauncher();
     pInterface->setupUi(this);
 
+#ifndef WIN32
+    pInterface->cbOpenGL->setChecked(true);
+#endif
+
     this->startTimer(HG_INDEX_INTERVAL);
 }
 
@@ -41,32 +45,46 @@ void MainLauncher::resizeEvent(QResizeEvent * event)
 void MainLauncher::on_b_play_clicked()
 {
     QStringList commands;
-    commands << "";
+
+#ifndef WIN32
+    commands << WOW_EXE_NAME;
+#endif
 
     if (pInterface->cbOpenGL->isChecked())
-        commands << " -opengl";
+        commands << "-opengl";
 
-    QProcess *wowApp = new QProcess(this);
+    QProcess wowApp(this);
+    QString tmpInfo;
 
-    wowApp->start("wow.exe", commands);
+    if (!QDir::current().exists(WOW_EXE_NAME))
+        tmpInfo = "Error: wrong directory";
+    else if (!wowApp.startDetached(WOW_PROCESS, commands))
+        tmpInfo = "Error: " + wowApp.errorString();
+    else
+        tmpInfo = "WoW runned successfully";
 
-    if (!wowApp->waitForFinished())
-    {
-        QDialog *err = new QDialog(this);
-
-        QLabel *errortxt = new QLabel(err);
-        errortxt->setText(wowApp->errorString());
-
-        err->show();
-    }
+    pInterface->lblInfo->setText(tmpInfo);
 }
 
 void MainLauncher::on_b_clearCache_clicked()
 {
     QDir currentDir = QDir::current();  // get app directory
-    if (currentDir.exists("Wow.exe"))   // check if it's WoW directory
+    QString tmpInfo = "";
+
+    if (currentDir.exists(WOW_EXE_NAME))   // check if it's WoW directory
+    {
         if (currentDir.cd("Cache"))     // change directory to Cache to have absolute path
+        {
             currentDir.rmpath(currentDir.absolutePath());
+            tmpInfo = "Cache cleaned";
+        }
+        else
+            tmpInfo = "Cache already cleaned";
+    }
+    else
+        tmpInfo = "Wrong directory";
+
+    pInterface->lblInfo->setText(tmpInfo);
 }
 
 void MainLauncher::on_webView_urlChanged(QUrl newUrl)

@@ -9,6 +9,14 @@
 #define HG_LAUNCHER_INDEX QUrl("http://panel.hellground.pl/testowo/stats_hg.php")
 #define HG_INDEX_INTERVAL 60000
 
+#define WOW_EXE_NAME    "Wow.exe"
+
+#ifdef WIN32
+#define WOW_PROCESS     WOW_EXE_NAME
+#else
+#define WOW_PROCESS     "wine"
+#endif
+
 namespace Ui
 {
     class MainLauncher;
