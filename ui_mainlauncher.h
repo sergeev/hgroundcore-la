@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainlauncher.ui'
 **
-** Created: Mon Feb 27 10:40:42 2012
+** Created: Tue Feb 28 18:11:08 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -20,6 +20,7 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QPushButton>
+#include <QtGui/QSpacerItem>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 #include <QtWebKit/QWebView>
@@ -31,12 +32,13 @@ class Ui_MainLauncher
 public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
-    QWebView *webView;
+    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *b_clearCache;
     QLabel *lblInfo;
     QCheckBox *cbOpenGL;
     QPushButton *b_play;
+    QWebView *webView;
 
     void setupUi(QDialog *MainLauncher)
     {
@@ -60,19 +62,12 @@ public:
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        webView = new QWebView(verticalLayoutWidget);
-        webView->setObjectName(QString::fromUtf8("webView"));
-        webView->setMaximumSize(QSize(550, 200));
-        webView->setMouseTracking(false);
-        webView->setContextMenuPolicy(Qt::NoContextMenu);
-        webView->setAcceptDrops(false);
-        webView->setAutoFillBackground(false);
-        webView->setUrl(QUrl(QString::fromUtf8("http://panel.hellground.pl/testowo/stats_hg.php")));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addWidget(webView);
+        verticalLayout->addItem(verticalSpacer);
 
         horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
+        horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         b_clearCache = new QPushButton(verticalLayoutWidget);
         b_clearCache->setObjectName(QString::fromUtf8("b_clearCache"));
@@ -100,23 +95,25 @@ public:
         palette.setBrush(QPalette::Active, QPalette::Text, brush);
         palette.setBrush(QPalette::Active, QPalette::BrightText, brush1);
         palette.setBrush(QPalette::Active, QPalette::Base, brush1);
-        palette.setBrush(QPalette::Active, QPalette::Window, brush1);
+        QBrush brush3(QColor(0, 0, 0, 175));
+        brush3.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Window, brush3);
         palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
         palette.setBrush(QPalette::Inactive, QPalette::Button, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Mid, brush2);
         palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette.setBrush(QPalette::Inactive, QPalette::BrightText, brush1);
         palette.setBrush(QPalette::Inactive, QPalette::Base, brush1);
-        palette.setBrush(QPalette::Inactive, QPalette::Window, brush1);
-        QBrush brush3(QColor(106, 104, 100, 255));
-        brush3.setStyle(Qt::SolidPattern);
-        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
+        palette.setBrush(QPalette::Inactive, QPalette::Window, brush3);
+        QBrush brush4(QColor(106, 104, 100, 255));
+        brush4.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
         palette.setBrush(QPalette::Disabled, QPalette::Button, brush1);
         palette.setBrush(QPalette::Disabled, QPalette::Mid, brush2);
-        palette.setBrush(QPalette::Disabled, QPalette::Text, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush4);
         palette.setBrush(QPalette::Disabled, QPalette::BrightText, brush1);
-        palette.setBrush(QPalette::Disabled, QPalette::Base, brush1);
-        palette.setBrush(QPalette::Disabled, QPalette::Window, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Base, brush3);
+        palette.setBrush(QPalette::Disabled, QPalette::Window, brush3);
         lblInfo->setPalette(palette);
         lblInfo->setAutoFillBackground(true);
 
@@ -129,24 +126,24 @@ public:
         cbOpenGL->setMaximumSize(QSize(550, 16777215));
         QPalette palette1;
         palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Active, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush3);
         palette1.setBrush(QPalette::Active, QPalette::Text, brush);
         palette1.setBrush(QPalette::Active, QPalette::Base, brush1);
-        QBrush brush4(QColor(0, 0, 127, 150));
-        brush4.setStyle(Qt::SolidPattern);
-        palette1.setBrush(QPalette::Active, QPalette::Window, brush4);
+        QBrush brush5(QColor(0, 0, 127, 150));
+        brush5.setStyle(Qt::SolidPattern);
+        palette1.setBrush(QPalette::Active, QPalette::Window, brush5);
         palette1.setBrush(QPalette::Active, QPalette::ToolTipText, brush);
         palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
-        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush1);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush3);
         palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
         palette1.setBrush(QPalette::Inactive, QPalette::Base, brush1);
-        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush4);
+        palette1.setBrush(QPalette::Inactive, QPalette::Window, brush5);
         palette1.setBrush(QPalette::Inactive, QPalette::ToolTipText, brush);
-        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush3);
-        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush1);
-        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush3);
-        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush4);
-        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush3);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush4);
+        palette1.setBrush(QPalette::Disabled, QPalette::Base, brush5);
+        palette1.setBrush(QPalette::Disabled, QPalette::Window, brush5);
         palette1.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         cbOpenGL->setPalette(palette1);
         cbOpenGL->setAutoFillBackground(true);
@@ -162,6 +159,19 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        webView = new QWebView(MainLauncher);
+        webView->setObjectName(QString::fromUtf8("webView"));
+        webView->setGeometry(QRect(0, 0, 550, 220));
+        webView->setMinimumSize(QSize(550, 220));
+        webView->setMaximumSize(QSize(550, 550));
+        webView->setMouseTracking(false);
+        webView->setContextMenuPolicy(Qt::NoContextMenu);
+        webView->setAcceptDrops(false);
+        webView->setAutoFillBackground(false);
+        webView->setUrl(QUrl(QString::fromUtf8("http://panel.hellground.pl/testowo/stats_hg.php")));
+        webView->raise();
+        verticalLayoutWidget->raise();
+        verticalLayoutWidget->raise();
 
         retranslateUi(MainLauncher);
 

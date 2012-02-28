@@ -40,6 +40,7 @@ void MainLauncher::resizeEvent(QResizeEvent * event)
 {
     pBackground->resize(event->size());
     pInterface->verticalLayoutWidget->resize(event->size());
+    pInterface->webView->resize(event->size());
 }
 
 void MainLauncher::on_b_play_clicked()
@@ -87,7 +88,7 @@ void MainLauncher::on_b_clearCache_clicked()
     pInterface->lblInfo->setText(tmpInfo);
 }
 
-void MainLauncher::on_webView_urlChanged(QUrl newUrl)
+void MainLauncher::on_webView_urlChanged(const QUrl &newUrl)
 {
     if (newUrl != HG_LAUNCHER_INDEX)
         on_webView_loadFinished(false);
@@ -96,19 +97,7 @@ void MainLauncher::on_webView_urlChanged(QUrl newUrl)
 void MainLauncher::on_webView_loadFinished(bool bSuccess)
 {
     if (!bSuccess)
-    {
         pInterface->webView->hide();
-        pBackground->show();
-    }
     else
-    {
-        QSize tmpSize = pInterface->webView->page()->mainFrame()->contentsSize();
-        if (tmpSize.height() > pInterface->webView->minimumHeight())
-            resize(tmpSize + pInterface->b_play->size());   // resize window to new content size + size for buttons
-    }
-}
-
-void MainLauncher::on_webView_linkClicked(const QUrl &/*arg1*/)
-{
-
+        resize(pInterface->webView->page()->mainFrame()->contentsSize());   // we don't care about checking size couse it's done by qt ;]
 }

@@ -54,36 +54,22 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QWebView" name="webView">
-      <property name="maximumSize">
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
        <size>
-        <width>550</width>
-        <height>200</height>
+        <width>20</width>
+        <height>40</height>
        </size>
       </property>
-      <property name="mouseTracking">
-       <bool>false</bool>
-      </property>
-      <property name="contextMenuPolicy">
-       <enum>Qt::NoContextMenu</enum>
-      </property>
-      <property name="acceptDrops">
-       <bool>false</bool>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="url">
-       <url>
-        <string>http://panel.hellground.pl/testowo/stats_hg.php</string>
-       </url>
-      </property>
-     </widget>
+     </spacer>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
-       <number>6</number>
+       <number>0</number>
       </property>
       <item>
        <widget class="QPushButton" name="b_clearCache">
@@ -165,7 +151,7 @@
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
-             <color alpha="125">
+             <color alpha="175">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -230,7 +216,7 @@
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
-             <color alpha="125">
+             <color alpha="175">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -286,7 +272,7 @@
            </colorrole>
            <colorrole role="Base">
             <brush brushstyle="SolidPattern">
-             <color alpha="125">
+             <color alpha="175">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -295,7 +281,7 @@
            </colorrole>
            <colorrole role="Window">
             <brush brushstyle="SolidPattern">
-             <color alpha="125">
+             <color alpha="175">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -341,7 +327,7 @@
            </colorrole>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
-             <color alpha="125">
+             <color alpha="175">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -397,7 +383,7 @@
            </colorrole>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
-             <color alpha="125">
+             <color alpha="175">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -453,7 +439,7 @@
            </colorrole>
            <colorrole role="Button">
             <brush brushstyle="SolidPattern">
-             <color alpha="125">
+             <color alpha="175">
               <red>0</red>
               <green>0</green>
               <blue>0</blue>
@@ -524,6 +510,48 @@
     </item>
    </layout>
   </widget>
+  <widget class="QWebView" name="webView">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>550</width>
+     <height>220</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>550</width>
+     <height>220</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>550</width>
+     <height>550</height>
+    </size>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="url">
+    <url>
+     <string>http://panel.hellground.pl/testowo/stats_hg.php</string>
+    </url>
+   </property>
+  </widget>
+  <zorder>webView</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>verticalLayoutWidget</zorder>
  </widget>
  <customwidgets>
   <customwidget>

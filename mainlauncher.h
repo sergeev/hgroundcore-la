@@ -36,16 +36,14 @@ protected:
 
 private:
     Ui::MainLauncher *pInterface;
-
     QFrame *pBackground;
 
 private slots:
-    void on_webView_urlChanged(QUrl);
+    void on_webView_urlChanged(const QUrl &newUrl);
     void on_webView_loadFinished(bool);
 
     void on_b_play_clicked();
     void on_b_clearCache_clicked();
-    void on_webView_linkClicked(const QUrl &arg1);
 };
 
 #endif // MAINLAUNCHER_H
