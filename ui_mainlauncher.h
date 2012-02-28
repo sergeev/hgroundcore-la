@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainlauncher.ui'
 **
-** Created: Tue Feb 28 18:11:08 2012
+** Created: Tue Feb 28 18:30:45 2012
 **      by: Qt User Interface Compiler version 4.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -171,7 +171,6 @@ public:
         webView->setUrl(QUrl(QString::fromUtf8("http://panel.hellground.pl/testowo/stats_hg.php")));
         webView->raise();
         verticalLayoutWidget->raise();
-        verticalLayoutWidget->raise();
 
         retranslateUi(MainLauncher);
 
@@ -180,7 +179,7 @@ public:
 
     void retranslateUi(QDialog *MainLauncher)
     {
-        MainLauncher->setWindowTitle(QApplication::translate("MainLauncher", "Dialog", 0, QApplication::UnicodeUTF8));
+        MainLauncher->setWindowTitle(QApplication::translate("MainLauncher", "HellGround Launcher - http://wow.hellground.pl/", 0, QApplication::UnicodeUTF8));
         b_clearCache->setText(QApplication::translate("MainLauncher", "Clear Cache", 0, QApplication::UnicodeUTF8));
         lblInfo->setText(QApplication::translate("MainLauncher", "HellGround Launcher", 0, QApplication::UnicodeUTF8));
         cbOpenGL->setText(QApplication::translate("MainLauncher", "- opengl", 0, QApplication::UnicodeUTF8));
